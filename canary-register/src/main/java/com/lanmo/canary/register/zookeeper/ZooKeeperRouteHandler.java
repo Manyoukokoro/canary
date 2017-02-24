@@ -1,6 +1,7 @@
 package com.lanmo.canary.register.zookeeper;
 
 import com.lanmo.canary.register.Provider;
+import com.lanmo.canary.register.RouteHandle;
 
 import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.collections4.CollectionUtils;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by bowen on 2017/01/18.
  */
-public abstract class ZooKeeperRouteHandler {
+public class ZooKeeperRouteHandler {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 

@@ -32,5 +32,10 @@ public class RegisterConfig {
      */
     private Integer timeOut;
 
+    /**
+     * 注册的是服务端 还是 client端  server表示 服务器端  client 表示客户端
+     */
+    private String registerType="server";
+
 
 }

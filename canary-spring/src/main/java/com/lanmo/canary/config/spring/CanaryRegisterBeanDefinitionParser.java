@@ -1,6 +1,8 @@
 package com.lanmo.canary.config.spring;
 
 import com.lanmo.canary.config.api.RegisterConfig;
+import com.lanmo.canary.config.route.ClientRouteHandleFactory;
+import com.lanmo.canary.config.route.ServerRouteHandleFactory;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -27,8 +29,7 @@ public class CanaryRegisterBeanDefinitionParser  extends AbstractSimpleBeanDefin
         String root=element.getAttribute("root");
         String exportPort=element.getAttribute("exportPort");
         String timeOut=element.getAttribute("timeOut");
-        boolean lazy=Boolean.valueOf(element.getAttribute("lazy")==null?"false":
-                element.getAttribute("lazy"));
+        String registerType=element.getAttribute("registerType");
         if(StringUtils.isBlank(id)){
             throw  new IllegalArgumentException("canary register id is not be null");
         }
@@ -55,6 +56,18 @@ public class CanaryRegisterBeanDefinitionParser  extends AbstractSimpleBeanDefin
             timeOut="3000";
         }
 
+        if(StringUtils.isBlank(registerType)){
+            registerType="server";
+        }
+        //初始化
+        if("server".equals(registerType)){
+            ServerRouteHandleFactory.initServer(protocol,address,root,Integer.valueOf(timeOut),Integer.valueOf(exportPort));
+        }else if("client".equals(registerType)){
+            ClientRouteHandleFactory.initClient(protocol,address,root,Integer.valueOf(timeOut),Integer.valueOf(exportPort));
+        }
+
+
+        //注入到spring容器中
         builder.addPropertyValue("id",id);
         builder.addPropertyValue("protocol",protocol);
         builder.addPropertyValue("address",address);
