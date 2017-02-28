@@ -1,7 +1,6 @@
 package com.lanmo.canary.register.zookeeper;
 
 import com.lanmo.canary.register.Provider;
-import com.lanmo.canary.register.RouteHandle;
 
 import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.collections4.CollectionUtils;

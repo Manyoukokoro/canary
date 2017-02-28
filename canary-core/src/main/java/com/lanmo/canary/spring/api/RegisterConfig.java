@@ -1,4 +1,4 @@
-package com.lanmo.canary.config.api;
+package com.lanmo.canary.spring.api;
 
 import lombok.Data;
 

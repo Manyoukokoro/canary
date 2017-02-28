@@ -1,4 +1,4 @@
-package com.lanmo.canary.config.spring;
+package com.lanmo.canary.spring.spring;
 
 import com.lanmo.canary.config.api.RegisterConfig;
 import com.lanmo.canary.config.route.ClientRouteHandleFactory;

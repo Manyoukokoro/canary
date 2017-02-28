@@ -10,6 +10,6 @@ public interface ServerRoute {
      * @param interfaceId
      * @param alisa
      */
-    void register(String interfaceId,String alisa);
+    void register(String interfaceId, String alisa);
 
 }

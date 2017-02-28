@@ -9,10 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>canary-register</module>
-        <module>canary-spring</module>
         <module>canary-common</module>
-        <module>canary-netty</module>
+        <module>canary-core</module>
     </modules>
 
 
