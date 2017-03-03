@@ -20,6 +20,9 @@ public class CanaryEncoder extends MessageToByteEncoder {
     private Codec codec=new ProtostuffCodec();
 
 
+    public CanaryEncoder(){
+    }
+
     public CanaryEncoder(Codec codec){
            this.codec=codec;
     }

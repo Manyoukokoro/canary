@@ -21,14 +21,23 @@ public class ServerConfig {
     private transient volatile Object ref;
     private transient volatile boolean initialized;
     private transient volatile boolean destroy;
-    protected void init(){
 
+
+    protected Object get(){
+            return ref;
+    }
+
+    protected void init(){
         if(destroy){
             return;
         }
         if(initialized){
             return;
         }
+        //暴露服务
+
+
+
 
 
         initialized=true;

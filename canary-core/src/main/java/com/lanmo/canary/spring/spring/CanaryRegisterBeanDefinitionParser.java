@@ -1,8 +1,8 @@
 package com.lanmo.canary.spring.spring;
 
-import com.lanmo.canary.config.api.RegisterConfig;
-import com.lanmo.canary.config.route.ClientRouteHandleFactory;
-import com.lanmo.canary.config.route.ServerRouteHandleFactory;
+import com.lanmo.canary.spring.api.RegisterConfig;
+import com.lanmo.canary.spring.factory.ClientRouteHandleFactory;
+import com.lanmo.canary.spring.factory.ServerRouteHandleFactory;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
