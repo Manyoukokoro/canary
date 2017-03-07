@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:test="http://www.bowen.com/schema/canary" xmlns:ant="http://www.bowen.com/schema/canary"
+       xmlns:canary="http://www.bowen.com/schema/canary" xmlns:carany="http://www.bowen.com/schema/canary"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.bowen.com/schema/canary
+    http://www.bowen.com/schema/canary/canary.xsd">
+
+
+    <carany:register id="clientRegister" address="127.0.0.1:2181" protocol="zookeeper" root="/canary" exportPort="3333" registerType="client" timeOut="6000"/>
+
+    <canary:reference id="testService" interfaceId="com.lanmo.canary.demo.service.TestService" alias="test" lazy="false" timeout="3000"/>
+
+</beans>

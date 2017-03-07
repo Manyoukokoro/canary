@@ -2,10 +2,8 @@ package com.lanmo.canary.spring.factory;
 
 import com.lanmo.canary.client.Client;
 import com.lanmo.canary.client.factory.ClientFactory;
+import com.lanmo.canary.client.route.ZooKeeperClientHandler;
 import com.lanmo.canary.register.RouteHandle;
-import com.lanmo.canary.register.ServerRoute;
-import com.lanmo.canary.register.zookeeper.ZooKeeperClientHandler;
-import com.lanmo.canary.register.zookeeper.ZooKeeperServerHandler;
 import com.lanmo.canary.spring.api.ReferenceConfig;
 
 import org.slf4j.Logger;
@@ -46,6 +44,10 @@ public class ClientRouteHandleFactory {
         }else {
             throw  new IllegalArgumentException("now canary only support register by zookeeper");
         }
+    }
+
+    public static synchronized Boolean haveInit(){
+        return  initialized;
     }
 
     /**

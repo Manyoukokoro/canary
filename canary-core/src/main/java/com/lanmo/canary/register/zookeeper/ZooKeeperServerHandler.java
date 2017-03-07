@@ -21,9 +21,12 @@ public class ZooKeeperServerHandler extends ZooKeeperRouteHandler implements Ser
 
     private String serverHost;
 
-    public ZooKeeperServerHandler(String root, String serverString, int timeout) {
+    private Integer port;
+
+    public ZooKeeperServerHandler(String root, String serverString, int timeout,Integer port) {
         super(root, serverString, timeout);
         this.serverHost = getLocalHost();
+        this.port=port;
         //开启一个扫描线程,反复检查自己是否在zookeeper上
         checkConnections2ZooK();
     }
@@ -31,6 +34,7 @@ public class ZooKeeperServerHandler extends ZooKeeperRouteHandler implements Ser
 
     public void register(String interfaceId, String alisa) {
         String dataPath = getDataPath(interfaceId, alisa);
+        logger.info("export interface {},alisa {},real path is {}",interfaceId,alisa,dataPath);
         if(infRegisterSet.contains(dataPath)){
             return;
         }
@@ -87,7 +91,7 @@ public class ZooKeeperServerHandler extends ZooKeeperRouteHandler implements Ser
     }
 
     private String getLocalHostPort() {
-        return serverHost + ":2211" ;
+        return serverHost + ":"+port ;
     }
 
 

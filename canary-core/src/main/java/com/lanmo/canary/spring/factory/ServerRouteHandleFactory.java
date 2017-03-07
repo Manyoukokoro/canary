@@ -22,6 +22,7 @@ public class ServerRouteHandleFactory {
     private static Logger logger= LoggerFactory.getLogger(ServerRouteHandleFactory.class);
     private static ServerRoute serverRoute =null;
     private static volatile boolean initialized=false;
+    private static volatile boolean start=false;
     private static Integer serverPort=null;
 
     private static Server server=null;
@@ -44,9 +45,8 @@ public class ServerRouteHandleFactory {
         }
         if(PROTOCOL_ZK.equals(protocol)){
             logger.info("init zookeeper server ip is {},root is {},timeout is {},server port is {}",address,root,timeout,port);
-            serverRoute=new ZooKeeperServerHandler(root,address,timeout);
+            serverRoute=new ZooKeeperServerHandler(root,address,timeout,port);
             serverPort=port;
-
             List<RequestHandle> requestHandleList=new ArrayList<RequestHandle>();
             requestHandleList.add(new CanaryRequestHandle());
             server=new Server(serverRoute,new ServerHandler(requestHandleList),serverPort);
@@ -56,14 +56,39 @@ public class ServerRouteHandleFactory {
         }
     }
 
+    /**
+     * c查看是否初始化
+     * @return
+     */
+    public  static synchronized Boolean haveInit(){
+        return initialized;
+    }
 
     public static synchronized void exportUrl(ServerConfig serverConfig){
         if(initialized){
+            if(!start){
+                start();
+            }
             server.registerServer(serverConfig);
         }else {
             throw  new IllegalArgumentException("canary server not init");
         }
 
+    }
+
+    private static synchronized void start(){
+        Thread t= new Thread(new Runnable() {
+            public void run() {
+                //start server
+                try {
+                    server.run();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t.start();
+        start=true;
     }
 
 }

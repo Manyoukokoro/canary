@@ -77,6 +77,7 @@ public class Client {
     public void init() {
         lock.lock();
         try {
+            logger.info("get this interface {},alias {}",referenceConfig.getInterfaceId(), referenceConfig.getAlias());
             List<Provider> providerList = routeHandle.route(referenceConfig.getInterfaceId(), referenceConfig.getAlias());
             if(CollectionUtils.isEmpty(providerList)){
                 return;

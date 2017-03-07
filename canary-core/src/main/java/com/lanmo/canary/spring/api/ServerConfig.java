@@ -31,13 +31,13 @@ public class ServerConfig {
 
     protected void init(){
         if(destroy){
-            return;
+            return ;
         }
         if(initialized){
             return;
         }
         //暴露服务
-         ServerRouteHandleFactory.exportUrl(getServerConfig());
+        ServerRouteHandleFactory.exportUrl(getServerConfig());
 
         initialized=true;
     }

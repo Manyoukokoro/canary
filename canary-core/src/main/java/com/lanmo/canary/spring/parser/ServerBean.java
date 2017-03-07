@@ -1,7 +1,9 @@
 package com.lanmo.canary.spring.parser;
 
+import com.lanmo.canary.spring.api.RegisterConfig;
 import com.lanmo.canary.spring.api.ServerConfig;
 
+import com.lanmo.canary.spring.factory.ServerRouteHandleFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -41,7 +43,16 @@ public class ServerBean extends ServerConfig implements FactoryBean,ApplicationC
         //获取需要暴露的实体类
         Object objectRef=applicationContext.getBean(getImpl());
         setRef(objectRef);
-        init();
+        if(ServerRouteHandleFactory.haveInit()){
+            init();
+        }else {
+            //执行初始化方法
+            RegisterConfig registerConfig= (RegisterConfig) applicationContext.getBean("serverRegister");
+            ServerRouteHandleFactory.initServer(registerConfig.getProtocol(),registerConfig.getAddress(),registerConfig.getRoot(),
+                    Integer.valueOf(registerConfig.getTimeOut()),Integer.valueOf(registerConfig.getExportPort()));
+           init();
+        }
+
     }
 
 }
