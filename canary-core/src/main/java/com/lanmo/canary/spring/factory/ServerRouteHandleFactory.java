@@ -58,6 +58,11 @@ public class ServerRouteHandleFactory {
 
 
     public static synchronized void exportUrl(ServerConfig serverConfig){
+        if(initialized){
+            server.registerServer(serverConfig);
+        }else {
+            throw  new IllegalArgumentException("canary server not init");
+        }
 
     }
 

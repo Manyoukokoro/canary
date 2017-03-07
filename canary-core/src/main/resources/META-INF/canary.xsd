@@ -1,0 +1,56 @@
+<xsd:schema xmlns="http://www.bowen.com/schema/canary"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://www.bowen.com/schema/canary"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+
+    <xsd:annotation>
+        <xsd:documentation><![CDATA[
+	Defines the configuration elements for the Spring Framework's AOP support.
+		]]></xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="reference">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="interfaceId" type="xsd:string"/>
+                    <xsd:attribute name="alias" type="xsd:string"/>
+                    <xsd:attribute name="timeout" type="xsd:int"/>
+                    <xsd:attribute name="lazy" type="xsd:boolean"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="server">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="interfaceId" type="xsd:string"/>
+                    <xsd:attribute name="alias" type="xsd:string"/>
+                    <xsd:attribute name="impl" type="xsd:string"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="register">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="protocol" type="xsd:string"/>
+                    <xsd:attribute name="address" type="xsd:string"/>
+                    <xsd:attribute name="root" type="xsd:string"/>
+                    <xsd:attribute name="exportPort" type="xsd:string"/>
+                    <xsd:attribute name="timeOut" type="xsd:string"/>
+                    <xsd:attribute name="registerType" type="xsd:string"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

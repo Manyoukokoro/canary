@@ -1,8 +1,7 @@
-package com.lanmo.canary.spring.spring;
+package com.lanmo.canary.spring.parser;
 
 import com.lanmo.canary.spring.api.ServerConfig;
 
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;

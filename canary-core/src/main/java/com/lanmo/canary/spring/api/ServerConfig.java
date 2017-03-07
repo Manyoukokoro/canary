@@ -1,5 +1,7 @@
 package com.lanmo.canary.spring.api;
 
+import com.lanmo.canary.spring.factory.ServerRouteHandleFactory;
+
 import java.util.Map;
 
 import lombok.Data;
@@ -35,10 +37,7 @@ public class ServerConfig {
             return;
         }
         //暴露服务
-
-
-
-
+         ServerRouteHandleFactory.exportUrl(getServerConfig());
 
         initialized=true;
     }
@@ -48,5 +47,12 @@ public class ServerConfig {
         destroy=true;
     }
 
+    private ServerConfig getServerConfig(){
+        ServerConfig serverConfig=new ServerConfig();
+        serverConfig.setInterfaceId(this.interfaceId);
+        serverConfig.setRef(ref);
+        serverConfig.setAlias(alias);
+        return serverConfig;
+    }
 
 }

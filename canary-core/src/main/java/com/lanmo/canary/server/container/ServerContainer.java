@@ -23,12 +23,12 @@ public class ServerContainer {
     public static <T> T getServer(ServerConfig serverBean,Class<T> clz){
 
         if (serverBean.getImpl() != null) {
-            return (T) serverBean.getImpl();
+            return (T) serverBean.getRef();
         }
         String key = serverBean.getInterfaceId() + "/" + serverBean.getAlias();
         serverBean = container.get(key);
         if(serverBean != null){
-            return (T)serverBean.getImpl();
+            return (T)serverBean.getRef();
         }
         return null;
     }
