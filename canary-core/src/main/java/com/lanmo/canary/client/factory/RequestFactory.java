@@ -1,23 +1,23 @@
 package com.lanmo.canary.client.factory;
 
-import com.bowen.ant.config.ConsumerConfig;
-import com.bowen.ant.constant.AntConstants;
-import com.bowen.ant.msg.MsgHeader;
-import com.bowen.ant.msg.RequestMsg;
+import com.lanmo.canary.common.constant.CanaryConstants;
+import com.lanmo.canary.netty.message.MsgHeader;
+import com.lanmo.canary.netty.message.RequestMsg;
+import com.lanmo.canary.spring.api.ReferenceConfig;
 
 /**
  * Created by cdliujian1 on 2016/11/4.
  */
 public class RequestFactory {
 
-    public static RequestMsg buildRequest(ConsumerConfig consumerConfig){
+    public static RequestMsg buildRequest(ReferenceConfig referenceConfig){
         RequestMsg requestMsg = new RequestMsg();
         MsgHeader msgHeader = new MsgHeader();
-        msgHeader.setClz(ConsumerConfig.class.getCanonicalName());
-        msgHeader.setMsgType(AntConstants.REQUEST_MSG);
+        msgHeader.setClz(ReferenceConfig.class.getCanonicalName());
+        msgHeader.setMsgType(CanaryConstants.REQUEST_MSG);
 
         requestMsg.setMsgHeader(msgHeader);
-        requestMsg.setConsumerBean(consumerConfig);
+        requestMsg.setConsumerBean(referenceConfig);
         return requestMsg;
     }
 

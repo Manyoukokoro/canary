@@ -1,8 +1,8 @@
 package com.lanmo.canary.server.handler;
 
-import com.bowen.ant.constant.AntConstants;
-import com.bowen.ant.msg.MsgHeader;
-import com.bowen.ant.msg.ResponseMsg;
+import com.lanmo.canary.common.constant.CanaryConstants;
+import com.lanmo.canary.netty.message.MsgHeader;
+import com.lanmo.canary.netty.message.ResponseMsg;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,11 +25,11 @@ public abstract class AbstractServerHandler  extends ChannelInboundHandlerAdapte
      */
     protected void sendResponse(Channel channel,Object msgResult){
 
-        MsgHeader msgHeader=new MsgHeader(AntConstants.RESPONSE_MSG);
+        MsgHeader msgHeader=new MsgHeader(CanaryConstants.RESPONSE_MSG);
         if(msgResult!=null){
             msgHeader.setClz(msgResult.getClass().getName());
         }else {
-            msgHeader.setClz(AntConstants.NULL_RESULT_CLASS);
+            msgHeader.setClz(CanaryConstants.NULL_RESULT_CLASS);
         }
         ResponseMsg responseMsg = new ResponseMsg();
         responseMsg.setReceiveTime(System.currentTimeMillis());
@@ -47,11 +47,11 @@ public abstract class AbstractServerHandler  extends ChannelInboundHandlerAdapte
      */
     protected void sendResponse(long msgId,Channel channel,Object msgResult){
 
-        MsgHeader msgHeader=new MsgHeader(AntConstants.RESPONSE_MSG);
+        MsgHeader msgHeader=new MsgHeader(CanaryConstants.RESPONSE_MSG);
         if(msgResult!=null){
             msgHeader.setClz(msgResult.getClass().getName());
         }else {
-            msgHeader.setClz(AntConstants.NULL_RESULT_CLASS);
+            msgHeader.setClz(CanaryConstants.NULL_RESULT_CLASS);
         }
 
         ResponseMsg responseMsg = new ResponseMsg();
