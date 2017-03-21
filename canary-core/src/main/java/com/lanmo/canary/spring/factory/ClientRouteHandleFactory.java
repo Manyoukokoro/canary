@@ -1,7 +1,6 @@
 package com.lanmo.canary.spring.factory;
 
 import com.lanmo.canary.client.Client;
-import com.lanmo.canary.client.factory.ClientFactory;
 import com.lanmo.canary.client.route.ZooKeeperClientHandler;
 import com.lanmo.canary.register.RouteHandle;
 import com.lanmo.canary.spring.api.ReferenceConfig;
@@ -56,7 +55,7 @@ public class ClientRouteHandleFactory {
      */
     public static synchronized Client getDefaultClient(ReferenceConfig referenceConfig){
         if(initialized){
-            Client client = ClientFactory.buildClient(referenceConfig, clientHandle);
+            Client client = new Client(referenceConfig, clientHandle);
             return client;
         } else{
             throw new IllegalArgumentException("canary clientHandle not init");

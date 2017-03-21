@@ -12,6 +12,7 @@
         <module>canary-common</module>
         <module>canary-core</module>
         <module>canary-test</module>
+        <module>canary-load</module>
     </modules>
 
 

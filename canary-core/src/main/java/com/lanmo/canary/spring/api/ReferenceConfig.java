@@ -1,7 +1,6 @@
 package com.lanmo.canary.spring.api;
 
 import com.lanmo.canary.client.Client;
-import com.lanmo.canary.client.factory.ClientFactory;
 import com.lanmo.canary.client.factory.ProxyFactory;
 import com.lanmo.canary.spring.factory.ClientRouteHandleFactory;
 
@@ -75,13 +74,13 @@ public class ReferenceConfig<T> {
         }
         initialized = true;
         if (interfaceId == null || interfaceId.length() == 0) {
-            throw new IllegalStateException("<canary:reference interface=\"\" /> interface not allow null!");
+            throw new IllegalStateException("<canary:reference interfaceId=\"\" /> interface not allow null!");
         }
 
         try {
             interfaceClass=Class.forName(interfaceId, true, Thread.currentThread().getContextClassLoader());
         } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("<canary:reference interface="+interfaceId+" /> interface not find!");
+            throw new IllegalStateException("<canary:reference interfaceId="+interfaceId+" /> interface not find!");
         }
 
         try {
